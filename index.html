@@ -19,22 +19,21 @@
         <div class="controls">
             <h4>Control Panel</h4>
             <div class="btns">
-                <button class="btn btn-outline-dark">Black</button>
-                <button class="btn btn-outline-warning">Random</button>
+                <button class="btn btn-outline-dark" onclick="setColor('black')">Black</button>
+                <button class="btn btn-outline-warning" onclick="setColor('random')">Random</button>
                 <button class="btn btn-outline-primary">Reset</button>
             </div>
             
             <div class="selectSize">
                 <h6>Select Grid Size</h6>
-                <button id="popup" class="btn btn-outline-primary">Select</button>
+                <button id="popup" class="btn btn-outline-info">Select</button>
+                <P id="message"></P>
             </div>
         </div>
         <div class="board"></div>
  
     </div>
    
-
-    
     <footer id="footer">MADE in ATL | 2023</footer>
    <script src="script.js"></script> 
 </body>
