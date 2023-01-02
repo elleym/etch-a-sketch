@@ -1,4 +1,5 @@
 let color = "black";
+let click = false;
 
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -12,6 +13,20 @@ btnPopup.addEventListener("click", function() {
 })
 
 function populateBoard(boxNum){
+
+    document.querySelector(".board").addEventListener("click", function(e) {
+        if(e.target.tagName != "BUTTON") {
+            click = !click
+            let draw = document.querySelector("#draw");
+            if(click){
+                draw.innerHTML = "Drawing";
+            }
+            else {
+                draw.innerHTML = "Click on board to begin drawing";
+            }
+        }
+    })
+
     let board = document.querySelector('.board')
     board.style.gridTemplateColumns = `repeat(${boxNum}, 1fr)`
     board.style.gridTemplateRows = `repeat(${boxNum}, 1fr)`
@@ -35,18 +50,25 @@ function getSize() {
         message.innerHTML = "Grid Size must be between 0 and 100."
     }
     else {
-        message.innerHTML = "Number Accepted"
+        message.innerHTML = "Grid Size Updated"
     }
     return input;
 }
 function colorDiv() {
-    if(color == "random") {
-        this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`
-    }
-    else {
-        this.style.backgroundColor = 'black'
+    if(click){
+        if(color == "random") {
+            this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`
+        }
+        else {
+            this.style.backgroundColor = 'black'
+        }
     }
 }
 function setColor(colorChoice) {
     color = colorChoice
+}
+
+function boardReset(){
+    let divs = document.querySelectorAll("square")
+    divs.forEach((square) => square.style.backgroundColor = "white")
 }
